@@ -18,8 +18,8 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
 
     // obfuscation
-    implementation 'com.yworks:yguard:3.1.0'
-    implementation 'com.yworks:annotation:3.1.0'
+    compileOnly 'com.yworks:yguard:3.1.0'
+    compileOnly 'com.yworks:annotation:3.1.0'
 }
 
 test {
@@ -35,7 +35,7 @@ def obfuscate = tasks.register('obfuscate') {
         ant.taskdef(
                 name: 'yguard',
                 classname: 'com.yworks.yguard.YGuardTask',
-                classpath: sourceSets.main.runtimeClasspath.asPath
+                classpath: sourceSets.main.compileClasspath.asPath
         )
 
         def archivePath = jar.archiveFile.get().asFile.path
